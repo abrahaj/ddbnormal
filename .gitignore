@@ -1,0 +1,17 @@
+.link_to_grails_plugins
+.settings
+target
+target-eclipse
+.classpath
+.project
+.livereload
+Guardfile
+.groovy
+*.orig
+.buildpath
+.idea
+ddb-next.iml
+bin
+*.tmp
+
+/tracking.txt
