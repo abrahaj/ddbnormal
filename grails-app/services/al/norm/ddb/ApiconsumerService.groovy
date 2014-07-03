@@ -38,6 +38,7 @@ class ApiconsumerService {
     log.info "String URL "+ url+createAuthString()
     def response = rest.get(url+createAuthString())
     if (response.getStatusCode()!=HttpStatus.OK) {
+      response.exceptionMessage= response.getMessage()
       log.error "Failed retrieving a resource successfully"
        throw new ServiceUnavailableException([status: response.getStatusCode(),
         message: "Invoking service failed"],

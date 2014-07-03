@@ -18,6 +18,7 @@ package al.norm.ddb.model.item
 import org.codehaus.groovy.grails.web.json.JSONObject;
 
 class ItemIndexingProfile {
+  
   String itemId
   
   Map<String,List<List>> facet=[:]

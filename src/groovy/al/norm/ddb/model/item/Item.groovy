@@ -36,12 +36,41 @@ class Item {
   List<ItemBinary> binaries=[]
   
   public Item(JSONObject item){
-    this.properties=new ItemProperties(item.properties)
-    this.indexingProfile=new ItemIndexingProfile(item."indexing-profile")
-    this.preview = new ItemPreview(item.preview)
+    /** 
+     * ItemProperties are technical information. They are missing on some objects
+     * No exception handling is needed
+     */
+    if (item.properties){
+      this.properties=new ItemProperties(item.properties)
+    }else {
+      this.properties=null
+    }
+    /**
+     * Indexing Profile are technical information. They are missing on some objects
+     * No exception handling is needed
+     */
+    if (item."indexing-profile"){
+      this.indexingProfile=new ItemIndexingProfile(item."indexing-profile")
+    }else{
+      this.indexingProfile=null
+    }
+    
+    /**
+     * Indexing Preview 
+     * 
+     */
+    if (item.preview){
+      this.preview = new ItemPreview(item.preview)
+    }else{
+      this.preview=null
+    }
+    
     this.view = new ItemView(item.view.item)
+    
     this.metadataRecord= item."metadata-record"
+    
     this.providerInfo=new ItemProvider(item."provider-info")
+    
     item.binaries.binary.each{
       binaries.add(new ItemBinary(it))
     }
