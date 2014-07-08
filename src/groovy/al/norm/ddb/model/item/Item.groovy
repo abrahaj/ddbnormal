@@ -18,23 +18,23 @@ package al.norm.ddb.model.item
 import org.codehaus.groovy.grails.web.json.JSONObject;
 
 class Item {
-  
+
   ItemProperties properties
   //TODO
   ItemEDM edm
-  
+
   ItemIndexingProfile indexingProfile
-  
+
   ItemPreview preview
-  
+
   ItemView view
-  
+
   String metadataRecord
-  
+
   ItemProvider providerInfo
-  
+
   List<ItemBinary> binaries=[]
-  
+
   public Item(JSONObject item){
     /** 
      * ItemProperties are technical information. They are missing on some objects
@@ -54,7 +54,7 @@ class Item {
     }else{
       this.indexingProfile=null
     }
-    
+
     /**
      * Indexing Preview 
      * 
@@ -64,13 +64,17 @@ class Item {
     }else{
       this.preview=null
     }
-    
-    this.view = new ItemView(item.view.item)
+
+    if (item.view){
+      this.view = new ItemView(item.view.item)
+    }else{
+      this.view=null
+    }
     
     this.metadataRecord= item."metadata-record"
-    
+
     this.providerInfo=new ItemProvider(item."provider-info")
-    
+
     item.binaries.binary.each{
       binaries.add(new ItemBinary(it))
     }

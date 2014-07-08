@@ -15,7 +15,9 @@
  */
 package al.norm.ddb
 
+import al.norm.ddb.exceptions.ItemInternalStructureException
 import al.norm.ddb.model.item.Item
+import al.norm.ddb.model.item.ItemView
 import grails.plugins.rest.client.RestResponse
 
 class ItemService {
@@ -26,11 +28,22 @@ class ItemService {
   def apiconsumerService
 
   def retrieveItem(String id) {
-    
+
     String backendUri = grailsApplication.config.ddb.backend.url.toString()
-    
+
     RestResponse response = apiconsumerService.doGet(backendUri+"items/"+id+"/aip?c=1")
+
     Item item = new Item(response.json)
+
+    if (item.view==null){
+      try {
+        response = apiconsumerService.doGet(backendUri+"items/"+id+"/view?c=1")
+        item.view=new ItemView(response.json.item)
+      } catch (ItemInternalStructureException e) {
+        e.printStackTrace()
+      }
+    }
+    
     return item
   }
 }

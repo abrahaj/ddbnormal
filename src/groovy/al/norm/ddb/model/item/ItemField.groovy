@@ -27,10 +27,19 @@ class ItemField {
     this.resource=field."@resource"
     this.id=field."@id"
     this.name=field.name
-    if (field.value){
-      field.value.each{
-        value.add(it)
-      }
+    if (field.value instanceof String ){
+      value=field.value.split(/\||;|,/);
+    }else{
+      value=field.value
     }
+  }
+
+  public List toList(){
+    return [this.id,this.name,this.resource,this.returnValue()]
+  }
+
+  public List returnValue(){
+    return this.value
+
   }
 }

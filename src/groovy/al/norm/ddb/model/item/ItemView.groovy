@@ -15,7 +15,11 @@
  */
 package al.norm.ddb.model.item
 
+import java.lang.reflect.Field;
+
 import al.norm.ddb.model.Institution
+
+import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 
 class ItemView {
@@ -40,87 +44,99 @@ class ItemView {
   String metadataRights
   String origin
   String viewers
-  
+
   ItemLicense license
-  
+
   Institution institution
-  
+
   Map<String,List<ItemField>> fields=[:]
-  
+  JSONArray field = []
   public ItemView(JSONObject item){
-    
+
     this.identifier=item.identifier
-    
+
     this.title=item.title
-    
+
     this.subtitle=item.subtitle
-    
+
     this.media=item.media
-    
+
     this.thumbnail=item.thumbnail
-    
+
     this.view=item.view
-    
+
     this.label=item.label
-    
+
     this.latitude=item.latitude
-    
+
     this.longitude=item.longitude
-    
+
     this.preview=item.preview
-    
+
     this.match=item.match
-    
+
     this.category=item.category
-    
+
     this.type=item.type
-    
+
     this.rights=item.rights
     this.metadataRights=item."metadata-rights"
     this.origin=item.origin
     this.viewers=item.viewers
-    
-    this.license = new ItemLicense(item.license)
-    
-    this.institution = new Institution(item.institution)
 
-    
+    if (item.license){
+      this.license = new ItemLicense(item.license)
+    } else{
+      this.license = null
+    }
+    if (item.institution){
+      this.institution = new Institution(item.institution)
+    }else{
+      item.institution=null
+    }
+
     /** Fields population below */
-    item.fields.each{
+    if (item.fields.getClass()==org.codehaus.groovy.grails.web.json.JSONObject){
+      field[0]=item.fields
+    }else{
+      field = item.fields
+    }    
+    field.each{
       ArrayList fieldsList =[]
       it.field.each{
         fieldsList.add(new ItemField(it))
       }
       this.fields.put(it."@usage",fieldsList)
     }
+
   }
-  
+
   public ItemView(JSONObject item, Boolean forSearch=1){
-    
+
     this.id=item.id
-    
+
     this.title=item.title
-    
+
     this.subtitle=item.subtitle
-    
+
     this.media=item.media
-    
+
     this.thumbnail=item.thumbnail
-    
+
     this.view=item.view
-    
+
     this.label=item.label
-    
+
     this.latitude=item.latitude
-    
+
     this.longitude=item.longitude
-    
+
     this.preview=item.preview
-    
+
     this.match=item.match
-    
+
     this.category=item.category
-    
+
     this.type=item.type
   }
 }
