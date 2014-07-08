@@ -43,7 +43,7 @@ class ItemService {
         e.printStackTrace()
       }
     }
-    
+    println item.binaries.first().path
     return item
   }
 }

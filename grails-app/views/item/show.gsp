@@ -7,7 +7,8 @@
 <body>
 
   <div class="row">
-${item.view.getTitle() }
+${item.view.getTitle()}
+<img src="${request.contextPath}${item?.preview?.thumbnail?."@href"}" />
   </div>
 </body>
 </html>

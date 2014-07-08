@@ -15,6 +15,7 @@
  */
 package al.norm.ddb
 /**
+ * TODO Remove (dots) from title and normalize other characters!
  * Clean the title of an Item from HTML Tags and replaces all spaces with -
  * Used in generating title urls
  * @author arb

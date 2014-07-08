@@ -16,7 +16,7 @@
 package al.norm.ddb.model
 
 /**
- * TODO Correct the population contructor
+ * TODO Create the population contructor
  * @author arb
  *
  */

@@ -15,7 +15,6 @@
  */
 package al.norm.ddb.model.item
 
-//TODO
 class ItemEDM {
 //  RDF: {
 //    Aggregation: {
@@ -100,7 +99,7 @@ class ItemEDM {
 //    }-
 //    type: "IMAGE"
 //    creator: "Stoedtner, Franz (Lichtbildverlag) (Fotograf)"
-//    description: "Länderkunde | Ethnographie, Europa | Albanien, Zigeunerin aus Albanien"
+//    description: "Lï¿½nderkunde | Ethnographie, Europa | Albanien, Zigeunerin aus Albanien"
 //    identifier: "http://www.deutschefotothek.de/obj87110545.html"
 //    date: "1900"
 //    subject: [4]

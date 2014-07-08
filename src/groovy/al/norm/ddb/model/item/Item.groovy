@@ -20,7 +20,7 @@ import org.codehaus.groovy.grails.web.json.JSONObject;
 class Item {
 
   ItemProperties properties
-  //TODO
+  //TODO  EDM population
   ItemEDM edm
 
   ItemIndexingProfile indexingProfile
