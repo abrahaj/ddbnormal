@@ -27,18 +27,24 @@ class ItemField {
     this.resource=field."@resource"
     this.id=field."@id"
     this.name=field.name
+    
+    /* Values might come in a list or as a string delimited by | or ; or , */
     if (field.value instanceof String ){
       value=field.value.split(/\||;|,/);
+    }else if(field.value instanceof JSONObject){
+      field.value.each{
+        value.add(it)
+      }
     }else{
       value=field.value
     }
   }
 
   public List toList(){
-    return [this.id,this.name,this.resource,this.returnValue()]
+    return [this.id,this.name,this.resource,this.__getValue()]
   }
 
-  public List returnValue(){
+  public List __getValue(){
     return this.value
 
   }
