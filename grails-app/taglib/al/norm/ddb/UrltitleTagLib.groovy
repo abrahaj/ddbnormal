@@ -15,15 +15,20 @@
  */
 package al.norm.ddb
 /**
- * TODO Remove (dots) from title and normalize other characters!
+ * 
  * Clean the title of an Item from HTML Tags and replaces all spaces with -
  * Used in generating title urls
+ * 1st replaceAll remove all html tags
+ * 2nd replaceAll replace spaces with dash -
+ * 3rd replaceAll remove all characters which are not unicode
+ * Might be refactored to have a TagLib which retrieves only unicode chars and then this other which is used for URL-Titles
  * @author arb
  *
  */
 class UrltitleTagLib {
     static defaultEncodeAs = 'html'
     def urlTitle = { attrs, body ->
-        out << attrs.text.replaceAll("<(.|\n)*?>", '').replaceAll(' ','-')
+        out << attrs.text.replaceAll("<(.|\n)*?>", '').replaceAll(" ","-").replaceAll("[^\\p{L}\\p{N}-]+", '')
+        
     }
 }
