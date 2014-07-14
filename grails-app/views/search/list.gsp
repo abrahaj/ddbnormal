@@ -2,7 +2,6 @@
 <head>
 <title>Searching for</title>
 <meta name="layout" content="main" />
-<r:require modules="bootstrap" />
 </head>
 <body>
   <h1>Search</h1>
@@ -20,7 +19,9 @@
       </div>
 
     </div>
-    <div class="col-xs-5 col-sm-3 col-lg-3">Entities come here</div>
+    <div class="col-xs-5 col-sm-3 col-lg-3">Entities come here
+    ${entityResults}
+    </div>
   </div>
 </body>
 </html>

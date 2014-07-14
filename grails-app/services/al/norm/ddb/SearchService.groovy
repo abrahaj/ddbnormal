@@ -43,15 +43,16 @@ class SearchService {
      * @param searchParam
      * @return Map
      */
-    def doSearch(SearchParameter searchParam) {
+    def doSearch(SearchParameter searchParam, String searchMethod="search/") {
         log.info "DoSearch for " + searchParam.toQueryString()
         
-       def response = apiconsumerService.doGet(grailsApplication.config.ddb.backend.url.toString()+"search/"+searchParam.toQueryString())
-       
+       def response = apiconsumerService.doGet(grailsApplication.config.ddb.backend.url.toString()+searchMethod+searchParam.toQueryString())
        SearchResponse sr = new SearchResponse(response.json)
-       
        def map=[numberOfResults:sr.numberOfResults, results:sr.results]
-       
        return map
+    }
+    
+    def doEntitySearch(SearchParameter searchParam){
+      return doSearch(searchParam,"entities")
     }
 }
