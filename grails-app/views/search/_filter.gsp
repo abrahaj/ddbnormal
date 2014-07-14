@@ -19,5 +19,5 @@
 
 </div>
 <div class="paginateButtons">
-  <util:remotePaginate total="${resultsTotal}" update="filteredList" action="filter" pageSizes="[5: '5 on Page',10:'10 on Page',15:'15 on Page']" />
+  <util:remotePaginate total="${resultsTotal}" update="filteredList" action="filter" params="[query:query]" pageSizes="[5: '5 on Page',10:'10 on Page',15:'15 on Page']" />
 </div>

@@ -22,7 +22,6 @@ class ItemController {
   def itemService
 
   def show = {
-    //TODO CHECK IF ID IS 32chars
     Item item = itemService.retrieveItem(params.id)
     render(view:'show', model:[item:item])
   }

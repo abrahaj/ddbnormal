@@ -30,13 +30,17 @@ class SearchController {
         searchParams.rows = Math.min(params.rows ? params.int('rows') : 10, 100)
         Map searchResponse = searchService.doSearch(searchParams)
 
-        render(view:'list', model: [results: searchResponse.results, resultsTotal: searchResponse.numberOfResults])
+        render(view:'list', model: [results: searchResponse.results, resultsTotal: searchResponse.numberOfResults, query:searchParams.query])
     }
 
     def filter = {
         SearchParameter searchParams = new SearchParameter();
 
         searchParams.query= "Albanien"
+        if (params.query) {
+          //Cleaning here?
+          searchParams.query= params.query
+        }
         searchParams.rows = Math.min(params.rows ? params.int('rows') : 10, 100)
         searchParams.offset = Math.min(params.offset ? params.int('offset') : 0, 30000)
         Map searchResponse = searchService.doSearch(searchParams)
