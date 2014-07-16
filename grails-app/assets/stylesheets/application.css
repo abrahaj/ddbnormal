@@ -8,5 +8,8 @@
 * compiled file, but it's generally better to create a new file per style scope.
 *
 *= require main
+*= require green
+*= require animate.min.css
+*= require owl.carousel.css
 *= require bootstrap
 */
