@@ -1,20 +1,29 @@
-// This is a manifest file that'll be compiled into application.js.
-//
-// Any JavaScript file within this directory can be referenced here using a relative path.
-//
-// You're free to add application-wide JavaScript to this file, but it's generally better 
-// to create separate JavaScript files as needed.
-//
 //= require jquery
+//= require jquery-migrate-1.2.1.js
+//= require bootstrap.min.js
+//= require gmap3.min.js
+//= require bootstrap-hover-dropdown.min.js
+//= require owl.carousel.min.js
+//= require css_browser_selector.min.js
+//= require echo.min.js
+//= require jquery.easing-1.3.min.js
+//= require bootstrap-slider.min.js
+//= require jquery.raty.min.js
+//= require jquery.prettyPhoto.min.js
+//= require jquery.customSelect.min.js
+//= require wow.min.js
+//= require scripts.js
+//= require_tree .
+
 //= require_tree .
 //= require_self
 
 if (typeof jQuery !== 'undefined') {
-	(function($) {
-		$('#spinner').ajaxStart(function() {
-			$(this).fadeIn();
-		}).ajaxStop(function() {
-			$(this).fadeOut();
-		});
-	})(jQuery);
+  (function($) {
+    $('#spinner').ajaxStart(function() {
+      $(this).fadeIn();
+    }).ajaxStop(function() {
+      $(this).fadeOut();
+    });
+  })(jQuery);
 }

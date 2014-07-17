@@ -3,7 +3,6 @@
 <head>
 <meta name="layout" content="main" />
 <title>Index View</title>
-<r:require modules="bootstrap" />
 </head>
 <body>
   <div class="row">

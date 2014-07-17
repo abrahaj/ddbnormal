@@ -11,5 +11,7 @@
 *= require green
 *= require animate.min.css
 *= require owl.carousel.css
+*= require font-awesome.min.css
+*= require bootstrap.min.css
 *= require bootstrap
 */
