@@ -18,8 +18,9 @@ package al.norm.ddb.model.search
 import al.norm.ddb.model.Entity
 import al.norm.ddb.model.Facet
 import al.norm.ddb.model.item.ItemView;
+import org.codehaus.groovy.grails.web.json.JSONObject;
 
-import org.codehaus.groovy.grails.web.json.JSONObject
+
 
 class SearchResponse {
   /**
