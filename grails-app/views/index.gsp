@@ -5,6 +5,8 @@
 <title>Index View</title>
 </head>
 <body>
-<g:render template="recent" />
+  <div class="container">
+    <g:render template="recent" />
+  </div>
 </body>
 </html>

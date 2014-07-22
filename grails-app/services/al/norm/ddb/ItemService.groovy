@@ -32,9 +32,10 @@ class ItemService {
     String backendUri = grailsApplication.config.ddb.backend.url.toString()
 
     RestResponse response = apiconsumerService.doGet(backendUri+"items/"+id+"/aip?c=1")
+    RestResponse parents = apiconsumerService.doGet(backendUri+"items/"+id+"/parents?c=1")
 
     Item item = new Item(response.json)
-
+    item.parents=parents.json.hierarchy
     if (item.view==null){
       try {
         response = apiconsumerService.doGet(backendUri+"items/"+id+"/view?c=1")

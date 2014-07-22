@@ -12,12 +12,12 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<g:render template="/layouts/top" />
-<g:render template="/layouts/header" />  
+  <g:render template="/layouts/top" />
+  <g:render template="/layouts/header" />
 
-  <div class="container">
+  
     <g:layoutBody />
-  </div>
+  
   <div id="footer">
     <div class="container">
       <p class="text-muted">Some Rights are Reserved @ARB.</p>

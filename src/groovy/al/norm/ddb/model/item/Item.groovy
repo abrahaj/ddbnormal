@@ -30,6 +30,8 @@ class Item {
   ItemView view
 
   String metadataRecord
+  
+  List parents
 
   ItemProvider providerInfo
 
@@ -72,7 +74,7 @@ class Item {
     }
     
     this.metadataRecord= item."metadata-record"
-
+    
     this.providerInfo=new ItemProvider(item."provider-info")
 
     item.binaries.binary.each{

@@ -51,6 +51,7 @@ class ItemView {
 
   Map<String,List<ItemField>> fields=[:]
   JSONArray field = []
+
   public ItemView(JSONObject item){
 
     this.identifier=item.identifier
@@ -100,7 +101,7 @@ class ItemView {
       field[0]=item.fields
     }else{
       field = item.fields
-    }    
+    }
     field.each{
       ArrayList fieldsList =[]
       it.field.each{
@@ -138,5 +139,20 @@ class ItemView {
     this.category=item.category
 
     this.type=item.type
+  }
+
+  /**
+   * This function will return a list of keywords or a null value  
+   * @return List
+   */
+  public retrieveKeywords(){
+
+    def display = fields.find{it.key=="display"}
+    def keywords = display.value.find{it.name=="Schlagwort"}
+    if (keywords?.value){
+      return keywords.value
+    }
+    return []
+
   }
 }
